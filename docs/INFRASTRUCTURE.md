@@ -163,3 +163,11 @@ Nicht öffentlich erreichbar:
 - Scheduler
 - Horizon-Container
 - interne Container-Netzwerke
+
+## Betriebsdokumentation
+
+Ergänzende Betriebsdokumente:
+
+- `docs/CONTAINERS.md` beschreibt geplante Container, Startcommands, Netzwerke, Volumes und Abhängigkeiten.
+- `docs/DEPLOYMENT_FLOW.md` beschreibt den Deployment-Ablauf von GitHub über Coolify bis Healthcheck.
+- `docs/RESTORE_PROCEDURE.md` beschreibt Wiederherstellung für Datenbank, Storage, Redis, Coolify und Server.

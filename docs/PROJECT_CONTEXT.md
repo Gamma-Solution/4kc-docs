@@ -73,3 +73,16 @@ Redis ist der nächste geplante Infrastruktur-Schritt.
 ## Nicht-Ziele dieses Repositories
 
 Dieses Repository enthält keinen Quellcode, keine produktiven Konfigurationsdateien und keine geheimen Zugangsdaten.
+
+## Öffentliche Wissensbasis
+
+`Gamma-Solution/4kc-docs` ist die zentrale öffentliche Wissensbasis für Entwickler, KI-Assistenten, Dokumentation und Architekturentscheidungen.
+
+Wichtige Ergänzungsdokumente:
+
+- `docs/ADR/` für Architecture Decision Records
+- `docs/MEETING_NOTES.md` für Projektchronologie
+- `docs/PROJECT_STATUS.md` für aktuellen Status
+- `docs/CONTAINERS.md` für Containerübersicht
+- `docs/DEPLOYMENT_FLOW.md` für Deployment-Ablauf
+- `docs/RESTORE_PROCEDURE.md` für Restore-Prozesse

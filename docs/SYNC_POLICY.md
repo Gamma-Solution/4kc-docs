@@ -63,6 +63,11 @@ Folgende öffentliche Dokumente sollten manuell gepflegt oder aus privaten Quell
 - `docs/BACKUP_STRATEGY.md`
 - `docs/GLOSSARY.md`
 - `docs/MEETING_NOTES.md`
+- `docs/ADR/*.md`
+- `docs/RESTORE_PROCEDURE.md`
+- `docs/DEPLOYMENT_FLOW.md`
+- `docs/CONTAINERS.md`
+- `docs/PROJECT_STATUS.md`
 
 ## Automatisierbare Synchronisation, später optional
 

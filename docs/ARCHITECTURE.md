@@ -144,3 +144,13 @@ Grundregeln:
 - sensitive Operationen serverseitig authorisieren
 - Secrets in Logs und UI-Ausgaben maskieren
 - öffentliche Dokumentation vor Veröffentlichung auf Leaks prüfen
+
+## Entscheidungsdokumentation
+
+Wichtige Architekturentscheidungen werden zusätzlich als ADRs dokumentiert:
+
+```text
+docs/ADR/
+```
+
+Jeder ADR dokumentiert Entscheidung, Begründung, Alternativen und Auswirkungen.

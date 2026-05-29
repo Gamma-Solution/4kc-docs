@@ -107,3 +107,13 @@ Eine Infrastrukturänderung ist erst abgeschlossen, wenn:
 - Production-Auswirkung klar ist
 - Rollback oder Restore-Ansatz bekannt ist
 - Healthcheck erfolgreich ist
+
+## Dokumentationsausbau
+
+Ergänzt und künftig mitzuführen:
+
+- ADR-Struktur unter `docs/ADR/`
+- Projektstatus unter `docs/PROJECT_STATUS.md`
+- Containerdokumentation unter `docs/CONTAINERS.md`
+- Deployment Flow unter `docs/DEPLOYMENT_FLOW.md`
+- Restore Procedure unter `docs/RESTORE_PROCEDURE.md`

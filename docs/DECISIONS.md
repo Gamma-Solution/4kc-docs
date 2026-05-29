@@ -115,3 +115,21 @@ Nicht erlaubt:
 - Kundendaten
 - produktive Secrets
 - Quellcode
+
+
+## ADR-Verzeichnis
+
+Detailentscheidungen werden zusätzlich als einzelne ADRs gepflegt:
+
+```text
+docs/ADR/
+```
+
+Startset:
+
+- ADR-0001 Coolify
+- ADR-0002 Dockerfile vs Nixpacks
+- ADR-0003 MariaDB vs PostgreSQL
+- ADR-0004 Container Strategy
+- ADR-0005 Backup Strategy
+- ADR-0006 Public Docs Knowledge Base

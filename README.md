@@ -72,6 +72,11 @@ Dieses Repository darf **nicht** enthalten:
 - [Synchronisationsrichtlinie](docs/SYNC_POLICY.md)
 - [Glossar](docs/GLOSSARY.md)
 - [Meeting Notes](docs/MEETING_NOTES.md)
+- [Projektstatus](docs/PROJECT_STATUS.md)
+- [ADR Index](docs/ADR/README.md)
+- [Container](docs/CONTAINERS.md)
+- [Deployment Flow](docs/DEPLOYMENT_FLOW.md)
+- [Restore Procedure](docs/RESTORE_PROCEDURE.md)
 
 ## Synchronisation aus dem privaten Repository
 
