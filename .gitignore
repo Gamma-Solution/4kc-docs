@@ -1,0 +1,19 @@
+# Keep this repository documentation-only.
+.env
+.env.*
+*.sql
+*.dump
+*.bak
+*.backup
+*.log
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+.DS_Store
+
+# Do not commit dependency/build/source artifacts here.
+vendor/
+node_modules/
+storage/
+bootstrap/cache/
