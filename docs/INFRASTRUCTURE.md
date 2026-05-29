@@ -13,7 +13,7 @@ srv120.4youhosting.ch
 Betriebssystem:
 
 ```text
-Ubuntu 24.04 LTS
+Ubuntu 24.04.4 LTS
 ```
 
 Infrastruktur-Basis:
@@ -25,6 +25,21 @@ Infrastruktur-Basis:
 - Firewall
 - Fail2Ban
 - Snapshots
+
+## Aktueller Stand
+
+```text
+srv120
+├── Ubuntu 24.04.4
+├── Docker
+├── Coolify
+├── MariaDB
+└── SSL / DNS
+```
+
+MariaDB läuft bereits erfolgreich als Docker-Container in Coolify.
+
+Redis ist der nächste geplante Schritt.
 
 ## Architekturvorgabe
 
@@ -52,6 +67,30 @@ Coolify verwaltet:
 - Worker/Scheduler/Horizon-Container
 - Logs und Healthchecks
 - Volumes und Backups, soweit über Coolify abgebildet
+
+## Production Zielstruktur
+
+```text
+Production
+├── 4kc-app-production
+├── 4kc-worker-production
+├── 4kc-scheduler-production
+├── 4kc-horizon-production
+├── 4kc-mariadb-production
+└── 4kc-redis-production
+```
+
+## Staging Zielstruktur
+
+```text
+Staging
+├── 4kc-app-staging
+├── 4kc-worker-staging
+├── 4kc-scheduler-staging
+├── 4kc-horizon-staging
+├── 4kc-mariadb-staging
+└── 4kc-redis-staging
+```
 
 ## Datenbank
 
@@ -110,7 +149,7 @@ Staging:
 └── 4kc-horizon-staging
 ```
 
-Production und Staging sollen voneinander getrennte Datenbanken, Redis-Instanzen, Volumes und Environment Variables verwenden.
+Production und Staging verwenden getrennte Datenbanken, Redis-Instanzen, Volumes und Environment Variables.
 
 ## Public Exposure
 

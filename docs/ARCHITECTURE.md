@@ -2,7 +2,7 @@
 
 ## Stack
 
-- Laravel 11
+- Laravel
 - PHP 8.3+
 - Filament / Blade / Livewire
 - MariaDB 11
@@ -19,6 +19,12 @@ Privates Source-Repository:
 
 ```text
 Gamma-Solution/4kc-panel
+```
+
+Öffentliches Dokumentationsrepository:
+
+```text
+Gamma-Solution/4kc-docs
 ```
 
 Empfohlene Struktur im privaten Repository:
@@ -41,6 +47,38 @@ Bedeutung:
 - `infra/`: Infrastruktur- und Betriebsnotizen ohne Secrets
 - `docs/`: private Arbeitsdokumentation
 - `scripts/`: Hilfsskripte ohne Secrets
+
+## Docker-Strategie
+
+Beschlossen ist ein eigenes Dockerfile für die Laravel-Anwendung:
+
+```text
+backend/Dockerfile
+backend/.dockerignore
+```
+
+Nixpacks wird nicht als langfristige Produktionsstrategie verwendet.
+
+Begründung:
+
+- reproduzierbares Build-Verhalten
+- volle Kontrolle über PHP-Version und Extensions
+- gleiche Image-Basis für App, Worker, Scheduler und Horizon
+- klarer Betrieb innerhalb von Coolify
+- weniger implizite Magie als Nixpacks
+
+## Runtime-Modell
+
+Ein Image, mehrere Runtime-Commands:
+
+```text
+4kc-app-<environment>        Web/Laravel App
+4kc-worker-<environment>     php artisan queue:work
+4kc-scheduler-<environment>  php artisan schedule:work
+4kc-horizon-<environment>    php artisan horizon
+```
+
+MariaDB und Redis laufen als separate Coolify-Services.
 
 ## Core-vs-Module-Prinzip
 
@@ -88,25 +126,11 @@ Provider-Aktionen sollen über einheitliche Operationen laufen:
 4. Ergebnis wird protokolliert.
 5. UI zeigt Status, Verlauf und Ergebnis an.
 
-Vorteile:
-
-- bessere Testbarkeit
-- weniger direkte Provider-Abhängigkeiten in Filament
-- zentrale Fehlerbehandlung
-- bessere Nachvollziehbarkeit
-- Queue-first und retry-fähig
-
 ## i18n-First
 
 Mehrsprachigkeit ist ein Architektur-Requirement.
 
 Alle UI-Texte, Labels, Menüs, Notifications und Fehlermeldungen sollen über Übersetzungsschlüssel gepflegt werden.
-
-Ziel:
-
-- Deutsch und Englisch als Basis
-- Provider-spezifische Texte ebenfalls übersetzbar
-- keine hart kodierten UI-Texte in zentralen Oberflächen
 
 ## Security by Default
 

@@ -6,12 +6,11 @@ Alle Deployments von 4KC erfolgen über Docker und Coolify auf der Zielplattform
 
 ## Empfohlene Deployment-Strategie
 
-Für Laravel + Filament + MariaDB + Redis wird ein eigenes Dockerfile empfohlen.
-
-Empfohlen:
+Für Laravel + Filament + MariaDB + Redis wird ein eigenes Dockerfile verwendet.
 
 ```text
 backend/Dockerfile
+backend/.dockerignore
 ```
 
 Coolify App Root:
@@ -29,56 +28,32 @@ backend/
 - gleiche Image-Basis für App, Worker, Scheduler und Horizon
 - transparenter als Nixpacks für ein langfristiges Produktionssystem
 
-## Nicht empfohlene Varianten als Dauerlösung
+## Coolify Build-Konfiguration
 
-### Nixpacks
-
-Geeignet für schnellen Smoke-Test, aber weniger ideal als dauerhafte Produktionsbasis.
-
-Risiken:
-
-- weniger explizite Kontrolle
-- automatisches Erkennungsverhalten
-- schwieriger zu debuggen bei PHP-Extensions, Vite oder Queue/Horizon-Themen
-
-### Docker Compose
-
-Geeignet für lokale Entwicklung oder Sonderfälle.
-
-Für Coolify Production wird eine Service-Trennung bevorzugt:
-
-- App als Deployment
-- Worker als eigenes Deployment
-- Scheduler als eigenes Deployment
-- Horizon als eigenes Deployment
-- MariaDB als Coolify Database Service
-- Redis als Coolify Service
-
-## Environments
-
-Empfohlen:
+Empfohlen für alle Laravel-basierten Services:
 
 ```text
-production
-staging
+Source Repository: Gamma-Solution/4kc-panel
+Root Directory: backend
+Build Pack / Build Type: Dockerfile
+Dockerfile: backend/Dockerfile
 ```
 
 Production:
 
-- Branch: `main`
-- eigene Datenbank
-- eigener Redis
-- eigene Volumes
-- eigene ENV-Werte
-- Deployment erst nach erfolgreichem Staging-Smoke-Test
+```text
+Branch: main
+Environment: production
+Domain: produktive 4KC Domain
+```
 
 Staging:
 
-- Branch: `staging` oder `develop`
-- eigene Datenbank
-- eigener Redis
-- eigene Volumes
-- automatische Deployments möglich
+```text
+Branch: staging oder develop
+Environment: staging
+Domain: staging 4KC Domain
+```
 
 ## Services
 
@@ -93,14 +68,23 @@ Production:
 4kc-redis-production
 ```
 
-Staging analog mit `-staging`.
+Staging:
+
+```text
+4kc-app-staging
+4kc-worker-staging
+4kc-scheduler-staging
+4kc-horizon-staging
+4kc-mariadb-staging
+4kc-redis-staging
+```
 
 ## Startcommands
 
 App:
 
 ```text
-Webserver/PHP-FPM Startcommand gemäss Dockerfile
+Standard-CMD aus Dockerfile
 ```
 
 Worker:
@@ -121,38 +105,103 @@ Horizon:
 php artisan horizon
 ```
 
-## Migrationen
+## Runtime ENV
+
+Produktive Werte werden ausschliesslich in Coolify gepflegt.
+
+Wichtige Variablen:
+
+```text
+APP_NAME
+APP_ENV
+APP_KEY
+APP_DEBUG
+APP_URL
+LOG_CHANNEL
+LOG_LEVEL
+DB_CONNECTION
+DB_HOST
+DB_PORT
+DB_DATABASE
+DB_USERNAME
+DB_PASSWORD
+REDIS_HOST
+REDIS_PASSWORD
+REDIS_PORT
+CACHE_STORE
+QUEUE_CONNECTION
+SESSION_DRIVER
+MAIL_MAILER
+MAIL_HOST
+MAIL_PORT
+MAIL_USERNAME
+MAIL_PASSWORD
+MAIL_ENCRYPTION
+MAIL_FROM_ADDRESS
+MAIL_FROM_NAME
+```
+
+Keine echten Werte in dieses öffentliche Repository eintragen.
+
+## Release-Schritte
 
 Migrationen dürfen nicht im Dockerfile ausgeführt werden.
 
 Richtig:
 
-- Image bauen ohne Datenbankabhängigkeit
-- Migrationen im kontrollierten Release-/Deploy-Schritt ausführen
+1. Image bauen
+2. Container mit Coolify ENV starten
+3. Migration kontrolliert ausführen
+4. Caches optimieren
+5. Worker/Horizon/Scheduler neu starten
 
-Release-Schritt:
+Empfohlene Release Commands:
 
 ```text
 php artisan migrate --force
+php artisan optimize
 ```
 
-Wichtig:
+Bei Problemen:
 
-- `APP_KEY` einmalig pro Environment setzen und beibehalten
-- `php artisan key:generate` nicht bei jedem Deployment ausführen
-- Worker/Horizon/Scheduler nach Deployments neu starten
+```text
+php artisan optimize:clear
+```
 
 ## Healthcheck
 
 Empfohlen:
 
-- Laravel `/up` oder eigener `/health` Endpoint
-- Datenbank- und Redis-Checks getrennt betrachten
-- Healthcheck öffentlich nur so weit wie nötig offenlegen
+```text
+/up
+```
+
+oder ein eigener Health Endpoint.
+
+Datenbank- und Redis-Abhängigkeiten sollten getrennt geprüft werden, damit ein reiner HTTP-Healthcheck nicht unnötig instabil wird.
+
+## Nicht empfohlene Varianten als Dauerlösung
+
+### Nixpacks
+
+Geeignet für schnellen Smoke-Test, aber weniger ideal als dauerhafte Produktionsbasis.
+
+### Docker Compose
+
+Geeignet für lokale Entwicklung oder Sonderfälle.
+
+Für Coolify Production wird eine Service-Trennung bevorzugt:
+
+- App als Deployment
+- Worker als eigenes Deployment
+- Scheduler als eigenes Deployment
+- Horizon als eigenes Deployment
+- MariaDB als Coolify Database Service
+- Redis als Coolify Service
 
 ## GitHub-Anbindung
 
-Empfohlen: Coolify GitHub App
+Empfohlen: Coolify GitHub App für Organisation `Gamma-Solution`.
 
 Gründe:
 
@@ -160,11 +209,3 @@ Gründe:
 - repo-spezifische Freigabe
 - gute Webhook-Unterstützung
 - besser wartbar als persönliche SSH Keys oder breit berechtigte Tokens
-
-## ENV-Strategie
-
-- `.env.example` im privaten Repository
-- echte ENV-Werte nur in Coolify
-- getrennte ENV-Werte pro Environment
-- keine Secrets in GitHub
-- keine Secrets in diesem öffentlichen Docs-Repository

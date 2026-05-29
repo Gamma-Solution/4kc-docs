@@ -30,9 +30,9 @@ Begründung:
 
 ## ADR-003: Eigener Dockerfile-Ansatz für Laravel
 
-Status: empfohlen
+Status: akzeptiert
 
-Für das erste echte Deployment soll ein eigenes Dockerfile unter `backend/` verwendet werden.
+Für das erste echte Deployment wird ein eigenes Dockerfile unter `backend/` verwendet.
 
 Begründung:
 
@@ -60,7 +60,7 @@ Begründung:
 
 Status: akzeptiert
 
-Öffentliche Dokumentation wird in einem separaten Repository `4kc-docs` gepflegt.
+Öffentliche Dokumentation wird im separaten Repository `Gamma-Solution/4kc-docs` gepflegt.
 
 Begründung:
 
@@ -83,7 +83,7 @@ Begründung:
 
 ## ADR-007: Production und Staging trennen
 
-Status: empfohlen
+Status: akzeptiert
 
 Production und Staging werden als getrennte Coolify-Environments mit eigenen Datenbanken, Redis-Instanzen, Volumes und ENV-Werten betrieben.
 
@@ -92,3 +92,26 @@ Begründung:
 - sichere Tests vor Production
 - keine Vermischung von Daten
 - reproduzierbarer Deployment-Prozess
+
+## ADR-008: 4kc-docs als zentrale öffentliche Wissensbasis
+
+Status: akzeptiert
+
+`Gamma-Solution/4kc-docs` ist die zentrale öffentliche Wissensbasis für Architektur, Infrastruktur, Entscheidungen und Roadmap.
+
+Verbindlich zu aktualisieren nach wichtigen Architektur- oder Infrastrukturentscheidungen:
+
+- `docs/PROJECT_CONTEXT.md`
+- `docs/INFRASTRUCTURE.md`
+- `docs/ARCHITECTURE.md`
+- `docs/DECISIONS.md`
+- `docs/ROADMAP.md`
+- `docs/MEETING_NOTES.md`
+
+Nicht erlaubt:
+
+- Zugangsdaten
+- Tokens
+- Kundendaten
+- produktive Secrets
+- Quellcode

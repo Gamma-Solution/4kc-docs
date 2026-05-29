@@ -12,9 +12,32 @@ Das System soll Kunden, Produkte, Verträge, Rechnungen, Domains, Hosting-Abos, 
 - Filament/Blade/Livewire-orientiertes Admin- und Backoffice-Interface
 - modularer Core mit klaren Provider-Grenzen
 - containerbasierter Betrieb über Docker + Coolify
-- sichere Verwaltung von Secrets ausserhalb des Repositories
+- sichere Verwaltung von Secrets ausserhalb der Repositories
 - mehrsprachige UI und Systemmeldungen von Anfang an
 - langfristig wartbare Betriebs- und Deployment-Struktur
+- öffentliche, bereinigte Dokumentationsbasis für Architektur- und Infrastrukturwissen
+
+## Repository-Modell
+
+Privates Entwicklungsrepository:
+
+```text
+Gamma-Solution/4kc-panel
+```
+
+Öffentliches Dokumentationsrepository:
+
+```text
+Gamma-Solution/4kc-docs
+```
+
+Die Laravel-Anwendung befindet sich im privaten Repository unter:
+
+```text
+backend/
+```
+
+`4kc-docs` ist die zentrale öffentliche Wissensbasis. Es enthält keine Zugangsdaten, Tokens, Kundendaten, produktiven Secrets oder Quellcode.
 
 ## Grundprinzipien
 
@@ -24,6 +47,7 @@ Das System soll Kunden, Produkte, Verträge, Rechnungen, Domains, Hosting-Abos, 
 4. UI löst keine Provider-Aktionen direkt aus, sondern arbeitet über Services, Operationen und Queues.
 5. Alle sicherheitsrelevanten Informationen bleiben ausserhalb öffentlicher Dokumentation und ausserhalb des Source-Repositories.
 6. Neue Features werden schrittweise geplant, implementiert, getestet und dokumentiert.
+7. Wichtige Architektur- und Infrastrukturentscheidungen werden in `docs/DECISIONS.md`, `docs/ROADMAP.md` und `docs/MEETING_NOTES.md` nachgeführt.
 
 ## Aktuelle Hauptplattform
 
@@ -31,21 +55,20 @@ Die zukünftige Hauptplattform für 4KC ist `srv120.4youhosting.ch`.
 
 Der Betrieb erfolgt vollständig containerbasiert über Docker und Coolify. Auf dem Host sollen keine direkten Installationen von PHP, MariaDB, Redis, Nginx oder Apache für 4KC erfolgen.
 
-## Privates Quellcode-Repository
-
-Das private Entwicklungsrepository ist:
+## Aktueller Infrastrukturstand
 
 ```text
-Gamma-Solution/4kc-panel
+srv120
+├── Ubuntu 24.04.4
+├── Docker
+├── Coolify
+├── MariaDB
+└── SSL / DNS
 ```
 
-Die Laravel-Anwendung befindet sich dort im Unterordner:
+MariaDB läuft bereits erfolgreich als Coolify-Container.
 
-```text
-backend/
-```
-
-Dieses öffentliche Repository ersetzt das private Repository nicht. Es dient ausschliesslich als bereinigte, öffentliche Wissensbasis.
+Redis ist der nächste geplante Infrastruktur-Schritt.
 
 ## Nicht-Ziele dieses Repositories
 

@@ -1,0 +1,29 @@
+# 4KC Meeting Notes
+
+Dieses Dokument ist das öffentliche, bereinigte Entscheidungs- und Fortschrittsprotokoll für 4KC.
+
+Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
+
+## 2026-05-29
+
+- Ubuntu 24.04.4 auf `srv120.4youhosting.ch` als zukünftige Hauptplattform bestätigt.
+- Docker installiert.
+- Coolify installiert und als zentrale Deployment-Plattform festgelegt.
+- SSL/DNS eingerichtet.
+- MariaDB 11 als Docker-Container in Coolify erstellt; Status: Running/healthy.
+- Architekturvorgabe bestätigt: 4KC wird vollständig containerbasiert betrieben.
+- Keine direkte Host-Installation von PHP, MariaDB, Redis, Nginx oder Apache für 4KC.
+- Privates Entwicklungsrepository bestätigt: `Gamma-Solution/4kc-panel`.
+- Laravel-Anwendung liegt im Unterordner `backend/`.
+- Öffentliches Dokumentationsrepository erstellt: `Gamma-Solution/4kc-docs`.
+- `4kc-docs` als zentrale öffentliche Wissensbasis für Architektur, Infrastruktur, Roadmap und Entscheidungen festgelegt.
+- Zielarchitektur mit getrennten Production- und Staging-Services beschlossen.
+- Docker-Strategie beschlossen: eigenes Dockerfile für `backend/`, Nixpacks nicht als langfristige Produktionslösung.
+- Nächste technische Prioritäten festgelegt: Redis, GitHub App Integration, Staging, Dockerfile, Laravel Staging Deployment, Deployment-Dokumentation, Backup-/Restore-Konzept.
+
+## 2026-05-30
+
+- Geplant: Redis-Service in Coolify für Production und Staging erstellen.
+- Geplant: GitHub App Integration für Organisation `Gamma-Solution` sauber einrichten.
+- Geplant: Staging Environment in Coolify vorbereiten.
+- Geplant: Laravel Deployment auf Staging validieren.

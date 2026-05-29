@@ -62,6 +62,7 @@ Folgende öffentliche Dokumente sollten manuell gepflegt oder aus privaten Quell
 - `docs/DEPLOYMENT.md`
 - `docs/BACKUP_STRATEGY.md`
 - `docs/GLOSSARY.md`
+- `docs/MEETING_NOTES.md`
 
 ## Automatisierbare Synchronisation, später optional
 

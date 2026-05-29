@@ -71,6 +71,7 @@ Dieses Repository darf **nicht** enthalten:
 - [Backup-Strategie](docs/BACKUP_STRATEGY.md)
 - [Synchronisationsrichtlinie](docs/SYNC_POLICY.md)
 - [Glossar](docs/GLOSSARY.md)
+- [Meeting Notes](docs/MEETING_NOTES.md)
 
 ## Synchronisation aus dem privaten Repository
 
