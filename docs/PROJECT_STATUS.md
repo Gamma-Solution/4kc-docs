@@ -152,3 +152,40 @@ Guardrails eingehalten:
 - keine Änderung an Production MariaDB
 - keine Migrationen allgemein
 - keine Secrets im Repository
+
+## 2026-05-29 Operating Roles and Production Guardrails
+
+Status:
+
+- Rollenmodell bestätigt: Igi ist Product Owner und trifft finale Freigaben.
+- Hermes ist Infrastruktur- und Deployment-Agent für Staging, Coolify, Docker, Build-Analyse, Dokumentation und Deployment-Vorbereitung.
+- ChatGPT übernimmt Architekturreview, Gegenprüfung, Strategie, Sicherheitsreview und Qualitätskontrolle.
+- Production bleibt grundsätzlich blockiert, bis Igi eine explizite Freigabe erteilt.
+
+Hermes darf selbständig vorbereiten:
+
+- Staging-Aufbau
+- Build-Log-Analyse
+- Dockerfile-Anpassungen
+- GitHub-Integration vorbereiten
+- Redis/MariaDB Staging verwalten
+- `4kc-docs` aktualisieren
+- Deployment-Prozesse vorbereiten
+
+Nicht ohne Freigabe:
+
+- Production Deployment
+- Migrationen
+- Änderungen an Production-Datenbanken
+- Ubuntu/Docker/Coolify-Basisänderungen
+- Secrets lesen oder speichern
+- Ressourcen löschen
+
+Arbeitsreihenfolge:
+
+1. Staging
+2. Build validieren
+3. Dockerfile validieren
+4. Healthchecks
+5. Review
+6. Production

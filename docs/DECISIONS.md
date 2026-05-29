@@ -133,3 +133,40 @@ Startset:
 - ADR-0004 Container Strategy
 - ADR-0005 Backup Strategy
 - ADR-0006 Public Docs Knowledge Base
+
+## ADR-009: Rollenmodell und Production Guardrails
+
+Status: akzeptiert
+
+4KC arbeitet mit klar getrennten Rollen:
+
+- Igi: Product Owner, finale Entscheidungen, Freigabe von Production und Migrationen, Verwaltung von Secrets und Zugängen.
+- Hermes: Infrastruktur- und Deployment-Agent für Staging, Coolify, Docker, Build-Analyse, Dokumentation, Deployment-Vorbereitung und Architekturumsetzung.
+- ChatGPT: Architekturreview, Gegenprüfung, Strategie, Sicherheitsreview und Qualitätskontrolle.
+
+Hermes darf selbständig vorbereitende Arbeiten in Staging und Dokumentation ausführen, insbesondere Staging-Aufbau, Build-Log-Analyse, Dockerfile-Anpassungen, GitHub-Integration, Staging Redis/MariaDB, `4kc-docs` und Deployment-Prozessvorbereitung.
+
+Ohne explizite Freigabe durch Igi sind blockiert:
+
+- Production Deployment
+- Migrationen
+- Änderungen an Production-Datenbanken
+- Änderungen an der Ubuntu/Docker/Coolify-Basis
+- Secrets lesen oder speichern
+- Ressourcen löschen
+
+Verbindliche Arbeitsreihenfolge:
+
+1. Staging
+2. Build validieren
+3. Dockerfile validieren
+4. Healthchecks
+5. Review
+6. Production
+
+Begründung:
+
+- klare Verantwortlichkeiten
+- sichere Trennung von Vorbereitung und Production
+- nachvollziehbare Übergabe an neue Entwickler oder KI-Agenten
+- minimiertes Risiko für Daten, Secrets und produktive Dienste

@@ -95,3 +95,43 @@ Nächster Schritt:
 
 - Temporären Token mit Log-/read-sensitive Zugriff verwenden oder bereinigte Deployment Logs aus der Coolify UI bereitstellen.
 - Danach gezielte Dockerfile-/Runtime-Korrektur vornehmen.
+
+## Rollen und Guardrails 2026-05-29
+
+Festgelegt:
+
+- Igi ist Product Owner, trifft finale Entscheidungen, gibt Production und Migrationen frei und verwaltet Secrets/Zugänge.
+- Hermes arbeitet als Infrastruktur- und Deployment-Agent für Staging, Coolify, Docker, Build-Analyse, Dokumentation, Deployment-Vorbereitung und Architekturumsetzung.
+- ChatGPT übernimmt Architekturreview, Gegenprüfung, Strategie, Sicherheitsreview und Qualitätskontrolle.
+
+Hermes darf selbständig:
+
+- Staging aufbauen
+- Build Logs analysieren
+- Dockerfile anpassen
+- GitHub Integration vorbereiten
+- Redis/MariaDB Staging verwalten
+- `4kc-docs` aktualisieren
+- Deployment-Prozesse vorbereiten
+
+Ohne explizite Freigabe blockiert:
+
+- Production Deployments
+- Migrationen
+- Änderungen an Production-Datenbanken
+- Änderungen an der Ubuntu/Docker/Coolify-Basis
+- Secrets lesen oder speichern
+- Ressourcen löschen
+
+Dokumentationspflicht:
+
+- Nach wichtigen Änderungen werden `docs/PROJECT_STATUS.md`, `docs/MEETING_NOTES.md` und `docs/DECISIONS.md` aktualisiert.
+
+Arbeitsreihenfolge:
+
+1. Staging
+2. Build validieren
+3. Dockerfile validieren
+4. Healthchecks
+5. Review
+6. Production
