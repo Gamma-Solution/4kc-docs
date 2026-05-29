@@ -38,3 +38,19 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 - Geplant: private GitHub App Integration für Organisation `Gamma-Solution` abschliessen.
 - Geplant: Staging Environment in Coolify vorbereiten.
 - Geplant: Laravel Deployment auf Staging validieren.
+
+
+## Staging App Provisioning 2026-05-29
+
+Erkenntnisse:
+
+- GitHub App Installation für `Gamma-Solution` ist abgeschlossen und in Coolify sichtbar.
+- `4kc-app-staging` wurde in Coolify im Environment `staging` angelegt.
+- Branch `staging` wurde aus dem Dockerfile-Validierungsbranch erstellt.
+- Coolify Deploy konnte wegen fehlender API Permission `deploy` noch nicht ausgelöst werden.
+- Build Logs liegen noch nicht vor.
+
+Entscheidung:
+
+- Keine Production-Aktionen bis separater Freigabe.
+- Für den nächsten Lauf wird ein temporärer Coolify Token mit `read + write + deploy` benötigt oder der bestehende Token wird um `deploy` erweitert.

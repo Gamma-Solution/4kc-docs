@@ -96,3 +96,22 @@ Legende:
 [~] Laravel Deployment Preparation on Staging
 [ ] Dockerfile validation in Coolify
 [ ] Backup and Restore validation
+
+
+## 2026-05-29 Staging App
+
+Status:
+
+- Private GitHub App `gamma-solution` in Coolify sichtbar.
+- Staging Branch `staging` für `Gamma-Solution/4kc-panel` erstellt.
+- Coolify Application `4kc-app-staging` angelegt.
+- Konfiguration: `/backend`, Dockerfile `/backend/Dockerfile`, Port `8080`, Healthcheck `/up`.
+- Staging ENV in Coolify gesetzt; Secrets bleiben ausserhalb von GitHub und Docs.
+- Erster Deploy ist blockiert: API-Token hat keine `deploy` Permission.
+
+Nicht durchgeführt:
+
+- kein Production Deployment
+- keine Production Migrationen
+- keine Änderung an Production MariaDB
+- keine Host-Installationen auf Ubuntu

@@ -91,15 +91,37 @@ Nicht durchgeführt:
 - keine Secrets im Repository
 - keine Änderung an Ubuntu/Basisinfrastruktur
 
-## Nächste Voraussetzung
+## GitHub App
 
-Für die Laravel-Staging-Application muss die private GitHub App Integration in Coolify für `Gamma-Solution/4kc-panel` verbunden sein.
-
-Aktueller Befund:
+Die private GitHub App für die Organisation `Gamma-Solution` ist in Coolify sichtbar.
 
 ```text
-Coolify GitHub Apps: nur Public GitHub sichtbar
-Repository Gamma-Solution/4kc-panel: private
+Name: gamma-solution
+UUID: dvd2a6ejflgjw5bfd50lssmv
+Organization: Gamma-Solution
+Public: false
+Repository Scope: Gamma-Solution/4kc-panel
 ```
 
-Solange keine private GitHub App Installation sichtbar ist, wird keine Staging-App gegen das private Repository erstellt.
+## Laravel Staging App
+
+```text
+Name: 4kc-app-staging
+UUID: zenvhebnteqtepn0ivzix7e2
+Repository: Gamma-Solution/4kc-panel
+Branch: staging
+Base Directory: /backend
+Build Pack: dockerfile
+Dockerfile Location: /backend/Dockerfile
+Ports Exposes: 8080
+Healthcheck Path: /up
+Auto Deploy: false
+Generated Preview URL: http://zenvhebnteqtepn0ivzix7e2.62.116.178.120.sslip.io
+Status nach Anlage: exited:unhealthy
+```
+
+Hinweis:
+
+- Der Status `exited:unhealthy` ist vor dem ersten erfolgreichen Deployment erwartbar.
+- Der erste Build wurde per API versucht, ist aber am aktuellen Coolify-Token gescheitert, weil die Permission `deploy` fehlt.
+- Es wurden keine Production-Ressourcen verändert.

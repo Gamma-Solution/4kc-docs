@@ -24,11 +24,13 @@ Aktueller Befund in Coolify:
 
 ```text
 Sichtbar: Public GitHub
-Private GitHub App für Gamma-Solution/4kc-panel: noch nicht sichtbar
+Sichtbar: gamma-solution
+Private GitHub App UUID: dvd2a6ejflgjw5bfd50lssmv
+Organization: Gamma-Solution
 Repository Gamma-Solution/4kc-panel: private
 ```
 
-Damit ist die Laravel-Staging-App noch nicht sauber gegen das private Repository anlegbar. Die GitHub App muss in Coolify/GitHub interaktiv installiert bzw. autorisiert werden; die API alleine stellt diese Browser-/GitHub-Autorisierung nicht her.
+Damit ist die Laravel-Staging-App sauber über die private GitHub App anlegbar. Der erste Deploy benötigt zusätzlich eine Coolify API Permission `deploy`.
 
 Begründung:
 
@@ -62,9 +64,9 @@ Source: GitHub App
 Repository: Gamma-Solution/4kc-panel
 Branch staging: staging
 Branch production: main
-Base Directory: backend
+Base Directory: /backend
 Build Type: Dockerfile
-Dockerfile: backend/Dockerfile
+Dockerfile: /backend/Dockerfile
 Public Port: App-intern gemäss Dockerfile
 Healthcheck: /up
 ```
@@ -160,3 +162,23 @@ Bis zur expliziten Production-Freigabe gilt:
 - keine Basisinfrastruktur-Änderungen auf Ubuntu
 - keine Secrets in GitHub oder Docs
 - zuerst Staging validieren
+
+
+## Umsetzung Staging-App 2026-05-29
+
+```text
+Application: 4kc-app-staging
+Application UUID: zenvhebnteqtepn0ivzix7e2
+Repository: Gamma-Solution/4kc-panel
+Branch: staging
+Build Pack: dockerfile
+Base Directory: /backend
+Dockerfile Location: /backend/Dockerfile
+Ports Exposes: 8080
+Healthcheck: /up
+Auto Deploy: false
+```
+
+Der Branch `staging` wurde aus `feature/4kc-coolify-dockerfile` erstellt, weil `main`/`develop` zum Zeitpunkt der Prüfung noch keinen deploybaren Laravel-Backend/Dockerfile-Stand enthielten.
+
+Der erste Deploy wurde noch nicht ausgeführt, weil der aktuelle API-Token keine `deploy` Permission hat.

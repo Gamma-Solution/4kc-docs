@@ -16,7 +16,7 @@ Build-Port: 8080
 Healthcheck: /up
 ```
 
-Das Repository ist privat. In Coolify ist aktuell nur `Public GitHub` sichtbar. Eine private GitHub App für `Gamma-Solution/4kc-panel` ist Voraussetzung für saubere Staging-Builds aus Coolify.
+Das Repository ist privat. Die private GitHub App `gamma-solution` ist in Coolify sichtbar und auf die Organisation `Gamma-Solution` installiert.
 
 ## Dockerfile-Befund
 
@@ -49,26 +49,53 @@ Project: 4KC
 Environment: staging
 Application Name: 4kc-app-staging
 Repository: Gamma-Solution/4kc-panel
-Branch: staging oder freigegebener Build-Validierungsbranch
-Base Directory: backend
+Branch: staging
+Base Directory: /backend
 Build Pack: dockerfile
-Dockerfile: backend/Dockerfile oder Dockerfile, abhängig von Coolify-Pfadauflösung
+Dockerfile: /backend/Dockerfile
 Ports Exposes: 8080
 Healthcheck Path: /up
 Auto Deploy: für Staging nach erster Validierung erlaubt
 Production Deploy: deaktiviert
 ```
 
-## Offene Punkte vor Coolify Build
+## Build-Versuch 2026-05-29
 
-1. Private GitHub App in Coolify für `Gamma-Solution/4kc-panel` verbinden.
-2. Staging-Branch-Strategie finalisieren:
-   - entweder `staging` Branch anlegen
-   - oder temporär freigegebenen Validierungsbranch verwenden
-3. Staging-App in Coolify anlegen.
-4. Build ohne Migrationen auslösen.
-5. `/up` Healthcheck prüfen.
-6. Erst danach Migrationen für Staging separat planen.
+Durchgeführt:
+
+```text
+GitHub App: gamma-solution / dvd2a6ejflgjw5bfd50lssmv
+Staging Branch: staging
+Branch Source: feature/4kc-coolify-dockerfile
+Staging App: 4kc-app-staging / zenvhebnteqtepn0ivzix7e2
+Repository: Gamma-Solution/4kc-panel
+Base Directory: /backend
+Dockerfile Location: /backend/Dockerfile
+Ports Exposes: 8080
+Healthcheck Path: /up
+```
+
+Ergebnis:
+
+```text
+Deploy Trigger: blockiert
+API Response: Missing required permissions: deploy
+Deployment Count: 0
+Application Logs: nicht verfügbar, weil Application noch nicht läuft
+```
+
+Analyse:
+
+- Die App-Erstellung über die private GitHub App funktioniert.
+- Repository, Branch und Dockerfile-Konfiguration sind in Coolify gesetzt.
+- Der erste Staging-Build konnte nicht gestartet werden, weil der verwendete API-Token keine `deploy` Permission besitzt.
+- Build-Logs können daher noch nicht bewertet werden.
+
+Nächster Schritt:
+
+- Coolify API Token um `deploy` Permission erweitern oder einen temporären Token mit `read + write + deploy` verwenden.
+- Danach `4kc-app-staging` erneut deployen und Build-Logs prüfen.
+- Migrationen weiterhin separat und erst nach Build-/Healthcheck-Freigabe ausführen.
 
 ## Guardrails
 
