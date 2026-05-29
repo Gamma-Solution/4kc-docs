@@ -115,3 +115,21 @@ Nicht durchgeführt:
 - keine Production Migrationen
 - keine Änderung an Production MariaDB
 - keine Host-Installationen auf Ubuntu
+
+
+## 2026-05-29 Deploy Permission Blocker
+
+Status:
+
+- Staging Deploy fachlich freigegeben.
+- Coolify API Deploy erneut versucht.
+- Deploy bleibt blockiert: `Missing required permissions: deploy`.
+- Build Logs liegen weiterhin nicht vor, weil kein Deployment gestartet wurde.
+
+Guardrails eingehalten:
+
+- kein Production Deployment
+- keine Production Migrationen
+- keine Änderung an Production MariaDB
+- keine Migrationen allgemein
+- keine Secrets im Repository

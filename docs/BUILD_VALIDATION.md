@@ -104,3 +104,28 @@ Nächster Schritt:
 - keine Änderung an Production-MariaDB
 - keine Secrets in GitHub oder Docs
 - keine Build-Secrets im Dockerfile
+
+
+## Deploy-Versuch 2026-05-29T15:23:51Z
+
+Freigabe lag vor für Staging Deploy, Build-Log-Analyse, Dockerfile-/Pfadkorrekturen, `/up` Healthcheck und Dokumentation.
+
+Ergebnis:
+
+```text
+Application: 4kc-app-staging / zenvhebnteqtepn0ivzix7e2
+Deploy Trigger: blockiert
+API Response: Missing required permissions: deploy
+```
+
+Analyse:
+
+- Die fachliche Freigabe ist vorhanden.
+- Coolify verweigert den Deploy weiterhin, weil der aktuell verwendete API-Token keine `deploy` Permission hat.
+- Es wurde kein Build gestartet; daher gibt es weiterhin keine Build Logs.
+- Es wurden keine Migrationen ausgeführt.
+- Es wurden keine Production-Ressourcen verändert.
+
+Benötigt für Fortsetzung:
+
+- Bestehenden Coolify API-Token um `deploy` Permission erweitern oder temporären Token mit `read + write + deploy` bereitstellen.

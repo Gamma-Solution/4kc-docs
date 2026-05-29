@@ -54,3 +54,28 @@ Entscheidung:
 
 - Keine Production-Aktionen bis separater Freigabe.
 - Für den nächsten Lauf wird ein temporärer Coolify Token mit `read + write + deploy` benötigt oder der bestehende Token wird um `deploy` erweitert.
+
+
+## Staging Deploy Freigabe 2026-05-29
+
+Freigegeben:
+
+- Deploy von `4kc-app-staging`
+- Build Logs analysieren
+- Dockerfile-/Pfadprobleme beheben
+- `/up` Healthcheck prüfen
+- Ergebnis in `4kc-docs` dokumentieren
+
+Nicht freigegeben:
+
+- Production Deployment
+- Production Migrationen
+- Änderungen an Production MariaDB
+- Migrationen allgemein
+- Secrets ins Repository
+
+Durchführung:
+
+- Deploy per Coolify API versucht.
+- Ergebnis: API blockiert mit `Missing required permissions: deploy`.
+- Nächster technischer Schritt: Token mit `deploy` Permission verwenden.
