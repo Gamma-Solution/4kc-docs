@@ -19,8 +19,8 @@ Legende:
 [✓] Coolify
 [✓] SSL / DNS
 [✓] MariaDB
-[ ] Redis
-[ ] Staging Environment
+[✓] Redis
+[~] Staging Environment
 [ ] Production Deployment
 [ ] Backup Automatisierung
 [ ] Restore-Test
@@ -51,7 +51,7 @@ Legende:
 [ ] 4kc-scheduler-production
 [ ] 4kc-horizon-production
 [✓] 4kc-mariadb-production
-[ ] 4kc-redis-production
+[✓] 4kc-production-redis
 [ ] 4kc-app-staging
 [ ] 4kc-worker-staging
 [ ] 4kc-scheduler-staging
@@ -92,8 +92,8 @@ Legende:
 
 ## Current Priority
 
-1. Redis Infrastructure
-2. GitHub App Integration for `Gamma-Solution`
-3. Staging Environment
-4. Laravel Deployment on Staging
+1. GitHub App Integration for `Gamma-Solution`
+2. Staging Environment
+3. Laravel Deployment Preparation on Staging
+4. Dockerfile validation
 5. Backup and Restore validation

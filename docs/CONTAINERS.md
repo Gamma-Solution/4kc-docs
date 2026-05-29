@@ -165,7 +165,7 @@ Abhängigkeiten:
 
 - keine App-Abhängigkeit; App/Worker/Scheduler/Horizon hängen von MariaDB ab
 
-### 4kc-redis-production
+### 4kc-production-redis
 
 Zweck:
 
@@ -175,24 +175,32 @@ Zweck:
 - Locks
 - optional Sessions
 
+Coolify Resource:
+
+```text
+Name: 4kc-production-redis
+UUID: bcc5hpvcj8alax9efh7jvgif
+Type: standalone-redis
+Status: running:healthy
+Public: false
+```
+
 Docker Image:
 
 ```text
 redis:7-alpine
 ```
 
-oder Valkey-Alternative nach Betriebsentscheid.
-
 Start Command:
 
 ```text
-Standard Redis Container Command mit Passwort/Protected Mode gemäss Coolify-Konfiguration
+Standard Redis Container Command gemäss Coolify-Konfiguration
 ```
 
 Netzwerk:
 
 ```text
-4kc-production-internal
+coolify
 ```
 
 Volumes:
@@ -202,6 +210,10 @@ Volumes:
 Abhängigkeiten:
 
 - keine App-Abhängigkeit; App/Worker/Scheduler/Horizon hängen von Redis ab
+
+Dokumentation:
+
+- [REDIS.md](REDIS.md)
 
 ## Staging
 

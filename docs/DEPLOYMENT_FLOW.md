@@ -66,8 +66,16 @@ Empfohlen:
 Source Repository: Gamma-Solution/4kc-panel
 Root Directory: backend
 Build Type: Dockerfile
-Dockerfile: backend/Dockerfile
+Dockerfile: backend/Dockerfile oder Dockerfile, abhängig von Coolify-Pfadinterpretation
+GitHub Integration: private GitHub App für Gamma-Solution/4kc-panel
 ```
+
+Details:
+
+- [GITHUB_DEPLOYMENT_STRATEGY.md](GITHUB_DEPLOYMENT_STRATEGY.md)
+- [STAGING_CONCEPT.md](STAGING_CONCEPT.md)
+
+Production Deployments bleiben bis zur Review-Freigabe deaktiviert.
 
 ## Build
 

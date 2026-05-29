@@ -23,3 +23,5 @@ Jeder ADR enthält mindestens:
 - [ADR-0004: Container-Strategie für App, Worker, Scheduler und Horizon](ADR-0004-container-strategy.md)
 - [ADR-0005: Backup-Strategie über Backrest/Restic, Unraid und Synology](ADR-0005-backup-strategy.md)
 - [ADR-0006: Öffentliches Dokumentationsrepository als zentrale Wissensbasis](ADR-0006-public-docs-knowledge-base.md)
+- [ADR-0007: Coolify API Responses und sensitive Daten](ADR-0007-coolify-api-sensitive-read-behavior.md)
+- [ADR-0008: GitHub App und Dockerfile-basierte Deployment-Strategie](ADR-0008-github-integration-dockerfile-deployment.md)

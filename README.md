@@ -76,6 +76,9 @@ Dieses Repository darf **nicht** enthalten:
 - [ADR Index](docs/ADR/README.md)
 - [Container](docs/CONTAINERS.md)
 - [Deployment Flow](docs/DEPLOYMENT_FLOW.md)
+- [Redis](docs/REDIS.md)
+- [Staging Concept](docs/STAGING_CONCEPT.md)
+- [GitHub Deployment Strategy](docs/GITHUB_DEPLOYMENT_STRATEGY.md)
 - [Restore Procedure](docs/RESTORE_PROCEDURE.md)
 
 ## Synchronisation aus dem privaten Repository

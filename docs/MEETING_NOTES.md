@@ -24,6 +24,11 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 ## 2026-05-30
 
 - Geplant: Redis-Service in Coolify für Production und Staging erstellen.
+- Redis-Service `4kc-production-redis` in Coolify für Production erstellt; Status `running:healthy`; nicht öffentlich exponiert.
+- Coolify 4.1.1 Verhalten dokumentiert: API-Responses können bei read/write Tokens sensitive Daten enthalten; öffentliche Doku nur bereinigt.
+- GitHub App Integration und Dockerfile-basierte Deployment-Strategie für `Gamma-Solution/4kc-panel` vorbereitet.
+- Staging-Konzept vorbereitet; Production Deployment und Migrationen bleiben bis Review blockiert.
+- Geplant: Redis-Service in Coolify für Staging erstellen.
 - Geplant: GitHub App Integration für Organisation `Gamma-Solution` sauber einrichten.
 - Geplant: Staging Environment in Coolify vorbereiten.
 - Geplant: Laravel Deployment auf Staging validieren.
