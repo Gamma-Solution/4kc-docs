@@ -79,3 +79,19 @@ Durchführung:
 - Deploy per Coolify API versucht.
 - Ergebnis: API blockiert mit `Missing required permissions: deploy`.
 - Nächster technischer Schritt: Token mit `deploy` Permission verwenden.
+
+
+## Staging Deploy Analyse 2026-05-29
+
+Erkenntnisse:
+
+- Neuer Coolify API Token kann Deploys auslösen.
+- Deployments werden gequeued, schlagen aber fehl.
+- Pfadkorrektur in Coolify: `Base Directory=/backend`, `Dockerfile Location=/Dockerfile`.
+- Lokale Checks des Staging-Branches: Composer Install, NPM Build und `/up` Route erfolgreich.
+- Für weitere Ursachenanalyse werden Deployment Logs benötigt; die Coolify API blendet diese ohne sensitive-read Permission aus.
+
+Nächster Schritt:
+
+- Temporären Token mit Log-/read-sensitive Zugriff verwenden oder bereinigte Deployment Logs aus der Coolify UI bereitstellen.
+- Danach gezielte Dockerfile-/Runtime-Korrektur vornehmen.

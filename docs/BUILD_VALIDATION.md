@@ -129,3 +129,45 @@ Analyse:
 Benötigt für Fortsetzung:
 
 - Bestehenden Coolify API-Token um `deploy` Permission erweitern oder temporären Token mit `read + write + deploy` bereitstellen.
+
+
+## Deploy-Versuche 2026-05-29T15:50:17Z
+
+Mit einem deploy-fähigen Coolify API Token konnte der Staging Deploy ausgelöst werden.
+
+Durchgeführt:
+
+```text
+Application: 4kc-app-staging / zenvhebnteqtepn0ivzix7e2
+Branch: staging
+Commit: dd02a15e4ac5d3e205491186e79c525eee926312
+Initial Dockerfile Location: /backend/Dockerfile
+Korrigierte Dockerfile Location: /Dockerfile
+Base Directory: /backend
+Healthcheck: /up
+```
+
+Ergebnis:
+
+```text
+Deploy fpqzxtuj9p7n792uolpq9y75: failed
+Deploy eycqh36qpkseo9n9aj0uves2: failed
+Deploy mmnfkv6n2lhe8alelzhzo2nw: failed
+Start/Retry hyfuu5s6a1z4nqyr9wx2qjt8: failed
+Application Status: exited:unhealthy
+```
+
+Analyse:
+
+- Die Permission `deploy` funktioniert; Deployment Requests werden angenommen und gequeued.
+- Die erste Pfadannahme `/backend/Dockerfile` scheitert sehr früh.
+- Mit `Base Directory=/backend` ist in Coolify die Dockerfile Location `/Dockerfile` die passendere Pfadangabe.
+- Auch mit korrigierter Dockerfile Location schlägt der Build/Start aktuell fehl.
+- Application Logs via `/applications/{uuid}/logs` sind nicht verfügbar, weil die Application nicht läuft.
+- Deployment Logs werden in der aktuellen API-Antwort ohne sensitive-read Permission nicht ausgeliefert; die API blendet das Feld `logs` aus.
+- Lokal geprüft: `composer install --no-dev --no-scripts`, `npm ci`, `npm run build` und Laravel `/up` via `php artisan serve` funktionieren im ausgecheckten `staging` Stand.
+
+Offen:
+
+- Für echte Build-Log-Analyse wird entweder ein temporärer Coolify Token mit read-sensitive/log Zugriff oder ein bereinigter Auszug der Deployment Logs aus der Coolify UI benötigt.
+- Keine Migrationen ausführen, bis separat freigegeben.

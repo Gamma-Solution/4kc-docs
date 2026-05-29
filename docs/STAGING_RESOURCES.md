@@ -125,3 +125,20 @@ Hinweis:
 - Der Status `exited:unhealthy` ist vor dem ersten erfolgreichen Deployment erwartbar.
 - Der erste Build wurde per API versucht, ist aber am aktuellen Coolify-Token gescheitert, weil die Permission `deploy` fehlt.
 - Es wurden keine Production-Ressourcen verändert.
+
+
+## Deploy Status 2026-05-29
+
+```text
+Application: 4kc-app-staging
+UUID: zenvhebnteqtepn0ivzix7e2
+Base Directory: /backend
+Dockerfile Location: /Dockerfile
+Status: exited:unhealthy
+Latest Deployment Status: failed
+```
+
+Hinweis zur Pfadauflösung:
+
+- Bei `Base Directory=/backend` erwartet Coolify die Dockerfile Location relativ zu diesem Base Directory.
+- Die aktive Staging-Konfiguration verwendet daher `/Dockerfile` statt `/backend/Dockerfile`.

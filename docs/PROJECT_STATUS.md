@@ -133,3 +133,22 @@ Guardrails eingehalten:
 - keine Änderung an Production MariaDB
 - keine Migrationen allgemein
 - keine Secrets im Repository
+
+
+## 2026-05-29 Staging Deploy Failure
+
+Status:
+
+- Deploy Permission ist vorhanden und Deploy Requests werden angenommen.
+- `4kc-app-staging` schlägt beim Build/Start fehl und bleibt `exited:unhealthy`.
+- Dockerfile Location wurde auf `/Dockerfile` korrigiert, passend zu `Base Directory=/backend`.
+- Lokale Composer-/NPM-/Laravel-Checks für den Staging-Stand sind erfolgreich.
+- Build Logs sind über die aktuelle API-Antwort nicht verfügbar, weil das Feld `logs` ohne sensitive-read ausgeblendet wird.
+
+Guardrails eingehalten:
+
+- kein Production Deployment
+- keine Production Migrationen
+- keine Änderung an Production MariaDB
+- keine Migrationen allgemein
+- keine Secrets im Repository
