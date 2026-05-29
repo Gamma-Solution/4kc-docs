@@ -78,7 +78,9 @@ Dieses Repository darf **nicht** enthalten:
 - [Deployment Flow](docs/DEPLOYMENT_FLOW.md)
 - [Redis](docs/REDIS.md)
 - [Staging Concept](docs/STAGING_CONCEPT.md)
+- [Staging Resources](docs/STAGING_RESOURCES.md)
 - [GitHub Deployment Strategy](docs/GITHUB_DEPLOYMENT_STRATEGY.md)
+- [Build Validation](docs/BUILD_VALIDATION.md)
 - [Restore Procedure](docs/RESTORE_PROCEDURE.md)
 
 ## Synchronisation aus dem privaten Repository

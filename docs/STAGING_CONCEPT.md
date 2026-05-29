@@ -18,25 +18,29 @@ main       -> Production Deployment nach Review
 
 ## Coolify Struktur
 
-Empfohlene Coolify-Struktur:
+Aktuell vorhanden:
 
 ```text
 Project: 4KC
 ├── Environment: staging
-│   ├── 4kc-app-staging
-│   ├── 4kc-worker-staging
-│   ├── 4kc-scheduler-staging
-│   ├── 4kc-horizon-staging
-│   ├── 4kc-mariadb-staging
-│   └── 4kc-redis-staging
+│   ├── UUID: y48bhtrfu6lxx3n7lrsibh1j
+│   ├── 4kc-staging-mariadb  running:healthy
+│   └── 4kc-staging-redis    running:healthy
 └── Environment: production
-    ├── 4kc-app-production
-    ├── 4kc-worker-production
-    ├── 4kc-scheduler-production
-    ├── 4kc-horizon-production
-    ├── 4kc-mariadb-production
-    └── 4kc-production-redis
+    ├── 4kc-mariadb-production / existing MariaDB resource
+    └── 4kc-production-redis   running:healthy
 ```
+
+Zielstruktur für die nächsten Schritte:
+
+```text
+4kc-app-staging
+4kc-worker-staging
+4kc-scheduler-staging
+4kc-horizon-staging
+```
+
+Die App-/Worker-/Scheduler-/Horizon-Container werden erst nach aktiver privater GitHub App Integration und Build-Review angelegt.
 
 ## Trennung von Production
 

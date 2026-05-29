@@ -20,6 +20,16 @@ backend/
 
 Empfohlen ist eine private GitHub App Integration für die Organisation `Gamma-Solution`.
 
+Aktueller Befund in Coolify:
+
+```text
+Sichtbar: Public GitHub
+Private GitHub App für Gamma-Solution/4kc-panel: noch nicht sichtbar
+Repository Gamma-Solution/4kc-panel: private
+```
+
+Damit ist die Laravel-Staging-App noch nicht sauber gegen das private Repository anlegbar. Die GitHub App muss in Coolify/GitHub interaktiv installiert bzw. autorisiert werden; die API alleine stellt diese Browser-/GitHub-Autorisierung nicht her.
+
 Begründung:
 
 - Zugriff kann auf ausgewählte Repositories begrenzt werden.

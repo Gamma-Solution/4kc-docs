@@ -30,5 +30,11 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 - Staging-Konzept vorbereitet; Production Deployment und Migrationen bleiben bis Review blockiert.
 - Geplant: Redis-Service in Coolify für Staging erstellen.
 - Geplant: GitHub App Integration für Organisation `Gamma-Solution` sauber einrichten.
+- Staging Environment `staging` in Coolify erstellt.
+- Staging MariaDB `4kc-staging-mariadb` erstellt; Status `running:healthy`; nicht öffentlich exponiert.
+- Staging Redis `4kc-staging-redis` erstellt; Status `running:healthy`; nicht öffentlich exponiert.
+- Befund zur GitHub Integration: `Gamma-Solution/4kc-panel` ist privat, in Coolify ist aktuell nur `Public GitHub` sichtbar; private GitHub App muss interaktiv autorisiert werden, bevor eine saubere Staging-App angelegt wird.
+- Lokale Docker-Build-Validierung in der Agent-Umgebung nicht möglich, da dort `docker` nicht installiert ist; Build-Validierung soll über Coolify Staging erfolgen.
+- Geplant: private GitHub App Integration für Organisation `Gamma-Solution` abschliessen.
 - Geplant: Staging Environment in Coolify vorbereiten.
 - Geplant: Laravel Deployment auf Staging validieren.

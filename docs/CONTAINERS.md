@@ -217,15 +217,20 @@ Dokumentation:
 
 ## Staging
 
-Staging verwendet dieselbe Struktur mit `-staging` Suffix:
+Staging verwendet dieselbe Struktur mit `-staging` Suffix. Bereits erstellt:
+
+```text
+4kc-staging-mariadb  MariaDB 11      running:healthy  internal only
+4kc-staging-redis    redis:7-alpine  running:healthy  internal only
+```
+
+Noch vorzubereiten nach privater GitHub App Integration:
 
 ```text
 4kc-app-staging
 4kc-worker-staging
 4kc-scheduler-staging
 4kc-horizon-staging
-4kc-mariadb-staging
-4kc-redis-staging
 ```
 
 Staging verwendet eigene Netzwerke, Volumes und ENV-Werte. Keine Verbindung zur Production-Datenbank oder zum Production-Redis.

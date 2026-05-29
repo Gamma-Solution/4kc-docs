@@ -20,7 +20,7 @@ Legende:
 [✓] SSL / DNS
 [✓] MariaDB
 [✓] Redis
-[~] Staging Environment
+[✓] Staging Environment
 [ ] Production Deployment
 [ ] Backup Automatisierung
 [ ] Restore-Test
@@ -56,8 +56,8 @@ Legende:
 [ ] 4kc-worker-staging
 [ ] 4kc-scheduler-staging
 [ ] 4kc-horizon-staging
-[ ] 4kc-mariadb-staging
-[ ] 4kc-redis-staging
+[✓] 4kc-mariadb-staging
+[✓] 4kc-redis-staging
 ```
 
 ## Integrations
@@ -92,8 +92,7 @@ Legende:
 
 ## Current Priority
 
-1. GitHub App Integration for `Gamma-Solution`
-2. Staging Environment
-3. Laravel Deployment Preparation on Staging
-4. Dockerfile validation
-5. Backup and Restore validation
+[~] GitHub App Integration for `Gamma-Solution`
+[~] Laravel Deployment Preparation on Staging
+[ ] Dockerfile validation in Coolify
+[ ] Backup and Restore validation
