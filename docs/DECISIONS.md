@@ -1,6 +1,37 @@
 # 4KC Architecture Decisions
 
-Dieses Dokument sammelt zentrale Architekturentscheidungen in kompakter ADR-Form.
+Dieses Dokument sammelt zentrale Architektur- und Infrastrukturentscheidungen.
+
+## Entscheidungsformat
+
+Neue Architektur- und Infrastrukturentscheidungen werden künftig mit eindeutiger `DEC-*` ID dokumentiert.
+
+Format:
+
+```text
+ID:
+DEC-0001
+
+Titel:
+...
+
+Datum:
+YYYY-MM-DD
+
+Entscheidung:
+...
+
+Begründung:
+...
+
+Alternativen:
+...
+
+Auswirkungen:
+...
+```
+
+Bestehende ADR-Einträge bleiben als historischer Bestand erhalten. Neue Entscheidungen verwenden das `DEC-*` Format.
 
 ## ADR-001: Laravel-first
 
@@ -119,7 +150,7 @@ Nicht erlaubt:
 
 ## ADR-Verzeichnis
 
-Detailentscheidungen werden zusätzlich als einzelne ADRs gepflegt:
+Historische Detailentscheidungen wurden zusätzlich als einzelne ADRs gepflegt:
 
 ```text
 docs/ADR/
@@ -133,6 +164,8 @@ Startset:
 - ADR-0004 Container Strategy
 - ADR-0005 Backup Strategy
 - ADR-0006 Public Docs Knowledge Base
+
+Künftige Entscheidungen werden direkt in diesem Dokument als `DEC-*` Einträge geführt, damit neue Entwickler und KI-Agenten Entscheidungen eindeutig referenzieren können.
 
 ## ADR-009: Rollenmodell und Production Guardrails
 
