@@ -207,3 +207,19 @@ Nicht durchgeführt:
 - keine Backrest-Jobs angelegt
 - keine Änderungen auf `srv120`
 - keine Secrets dokumentiert
+
+## 2026-05-30 srv120 Backup Implementation Plan
+
+Status:
+
+- Technischer Umsetzungsplan für Backrest/Restic erstellt: `docs/BACKUP_IMPLEMENTATION_PLAN.md`.
+- Der Plan beschreibt Backrest auf Unraid, separaten Backup-User auf `srv120`, MariaDB Dump-Scripts, Coolify-Daten, Laravel Storage, Redis-Snapshots, Retention und Restore-Test.
+- Umsetzung ist in freigabepflichtige Gates/Tickets T01-T15 gegliedert.
+- Produktive Backup-Jobs bleiben bis nach Review, manuellem Testlauf und Restore-Test deaktiviert.
+
+Nicht durchgeführt:
+
+- keine Backrest-Jobs erstellt
+- keine produktiven Backup-Schedules aktiviert
+- keine Änderungen auf `srv120`
+- keine Secrets dokumentiert

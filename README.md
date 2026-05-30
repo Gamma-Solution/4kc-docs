@@ -107,3 +107,9 @@ Alternative Namen:
 - `4kc-knowledge-base`
 
 Für die aktuelle Zielsetzung ist `4kc-docs` die beste Wahl.
+
+## Backup Documentation
+
+- [Backup Strategy](docs/BACKUP_STRATEGY.md)
+- [Backup Implementation Plan](docs/BACKUP_IMPLEMENTATION_PLAN.md)
+- [Restore Procedure](docs/RESTORE_PROCEDURE.md)

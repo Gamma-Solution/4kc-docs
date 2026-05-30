@@ -42,6 +42,7 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 
 - Backup-Zielarchitektur für `srv120` festgelegt: Backrest soll auf Unraid laufen, `srv120` per dediziertem SSH-Backup-User anbinden, MariaDB Production/Staging über kontrollierte Dumps sichern, Laravel Storage/Coolify/Redis/Host-Konfiguration in verschlüsselte Restic Snapshots aufnehmen und die Synology RS422+ als zweite Sicherung nutzen.
 - Backup-Pläne wurden noch nicht erstellt; nächster Schritt ist die technische Planung von Backrest-Jobs, Dump-Scripts, sudoers-Minimalrechten, Retention und Restore-Test.
+- Backup-Strategie freigegeben; technischer Umsetzungsplan unter `docs/BACKUP_IMPLEMENTATION_PLAN.md` erstellt. Enthalten sind Backrest auf Unraid, separater Backup-User, MariaDB Dump-Scripts, Coolify-Daten, Laravel Storage, Redis-Bewertung, Retention, Restore-Test und Freigabe-Gates. Noch keine produktiven Backup-Jobs erstellt.
 
 
 ## Staging App Provisioning 2026-05-29
