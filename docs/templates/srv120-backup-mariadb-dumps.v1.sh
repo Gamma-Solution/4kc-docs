@@ -41,8 +41,19 @@ load_env() {
 
   : "${DB_NAME:?DB_NAME missing in ${env_file}}"
   : "${DB_USER:?DB_USER missing in ${env_file}}"
-  : "${DB_PASSWORD:?DB_PASSWORD missing in ${env_file}}"
+
+  if [[ -z "${MARIADB_CONTAINER:-}" && -n "${DB_HOST:-}" ]]; then
+    MARIADB_CONTAINER="$DB_HOST"
+  fi
   : "${MARIADB_CONTAINER:?MARIADB_CONTAINER missing in ${env_file}}"
+
+  # Prefer the root-only cnf file for the secret value. This keeps secret handling
+  # outside the dump output tree and avoids documenting passwords in env listings.
+  local cnf_file="${CONFIG_DIR}/${env_name}.cnf"
+  if [[ -r "$cnf_file" ]]; then
+    DB_PASSWORD="$(awk -F= '$1 == "password" { print substr($0, index($0, "=") + 1); exit }' "$cnf_file")"
+  fi
+  : "${DB_PASSWORD:?DB_PASSWORD missing in ${env_file} or ${cnf_file}}"
 
   if [[ "$DB_NAME" =~ $SYSTEM_DATABASES_REGEX ]]; then
     fail "refusing to dump system database for ${env_name}"
