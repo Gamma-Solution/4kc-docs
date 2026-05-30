@@ -96,6 +96,7 @@ Legende:
 [~] Laravel Deployment Preparation on Staging
 [ ] Dockerfile validation in Coolify
 [ ] Backup and Restore validation
+[~] Weekly read-only srv120 Monitoring: Host erreichbar, Ubuntu ohne ausstehende Updates, Disk/RAM/CPU unauffällig; Docker-/Container-/DB-/Redis-Status aktuell durch fehlende Docker-Socket-Leserechte des Monitoring-Users nicht prüfbar; srv120-Hostname liefert Traefik-Default-Zertifikat.
 
 
 ## 2026-05-29 Staging App

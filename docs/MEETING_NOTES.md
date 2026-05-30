@@ -38,6 +38,7 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 - Geplant: private GitHub App Integration für Organisation `Gamma-Solution` abschliessen.
 - Geplant: Staging Environment in Coolify vorbereiten.
 - Geplant: Laravel Deployment auf Staging validieren.
+- Wöchentliches read-only Monitoring auf `srv120.4youhosting.ch`: SSH funktioniert mit `hermes-monitor`; Ubuntu meldet keine ausstehenden Updates; Disk/RAM/CPU unauffällig. Docker-/Container-/MariaDB-/Redis-/Backup-Status sind mit dem aktuellen Monitoring-User nicht eindeutig prüfbar, da kein lesender Zugriff auf `/var/run/docker.sock` besteht. HTTPS für `4kc.ch` und `coolify.4youhosting.ch` erreichbar; der direkte srv120-Hostname liefert ein Traefik-Default-/Self-signed-Zertifikat.
 
 
 ## Staging App Provisioning 2026-05-29
