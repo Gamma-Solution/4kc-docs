@@ -50,6 +50,8 @@ Dieses Repository darf **nicht** enthalten:
 │   ├── DATABASE.md
 │   ├── DEPLOYMENT.md
 │   ├── BACKUP_STRATEGY.md
+│   ├── BACKUP_IMPLEMENTATION_PLAN.md
+│   ├── BACKUP_T01_UNRAID_BACKREST_PREP.md
 │   ├── SYNC_POLICY.md
 │   └── GLOSSARY.md
 ├── diagrams
@@ -112,4 +114,5 @@ Für die aktuelle Zielsetzung ist `4kc-docs` die beste Wahl.
 
 - [Backup Strategy](docs/BACKUP_STRATEGY.md)
 - [Backup Implementation Plan](docs/BACKUP_IMPLEMENTATION_PLAN.md)
+- [T01 Backrest auf Unraid vorbereiten](docs/BACKUP_T01_UNRAID_BACKREST_PREP.md)
 - [Restore Procedure](docs/RESTORE_PROCEDURE.md)

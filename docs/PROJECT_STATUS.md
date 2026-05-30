@@ -96,6 +96,7 @@ Legende:
 [~] Laravel Deployment Preparation on Staging
 [ ] Dockerfile validation in Coolify
 [ ] Backup and Restore validation
+[ ] T02 Backrest SSH-Key vorbereiten
 [~] Weekly read-only srv120 Monitoring: Host erreichbar, Ubuntu ohne ausstehende Updates, Disk/RAM/CPU unauffällig; Docker-/Container-/DB-/Redis-Status aktuell durch fehlende Docker-Socket-Leserechte des Monitoring-Users nicht prüfbar; srv120-Hostname liefert Traefik-Default-Zertifikat.
 
 
@@ -223,3 +224,22 @@ Nicht durchgeführt:
 - keine produktiven Backup-Schedules aktiviert
 - keine Änderungen auf `srv120`
 - keine Secrets dokumentiert
+
+## 2026-05-30 srv120 Backup T01 Backrest Unraid Prep
+
+Status:
+
+- T01 wurde gestartet und nicht-produktiv geprüft.
+- Backrest UI ist von der Hermes-VM im LAN erreichbar.
+- Sichtbare Backrest UI Build Version: `1.13.0`.
+- Es wurden keine Backrest-Jobs erstellt.
+- Es wurden keine Schedules aktiviert.
+- Es wurden keine Restic-Repositories angelegt.
+- Es wurden keine Änderungen auf `srv120` durchgeführt.
+- T01-Details: `docs/BACKUP_T01_UNRAID_BACKREST_PREP.md`.
+
+Offen:
+
+- Backrest-/Unraid-Admin-Konfiguration nur nach expliziter Freigabe bzw. mit Betreiberzugang prüfen.
+- Finaler Unraid Repository-Pfad und Secret-Ablage sind noch zu bestätigen.
+- Nächster Schritt: T02 separaten Backrest SSH-Key vorbereiten.

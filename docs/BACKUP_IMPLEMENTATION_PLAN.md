@@ -835,7 +835,7 @@ Rot: Backup fehlgeschlagen, Repository beschädigt, Restore-Test fehlgeschlagen,
 Nach Review und Freigabe empfiehlt sich diese Reihenfolge:
 
 ```text
-T01: Backrest auf Unraid vorbereiten, ohne Jobs
+T01: Backrest auf Unraid vorbereiten, ohne Jobs — gestartet/verifiziert, siehe `docs/BACKUP_T01_UNRAID_BACKREST_PREP.md`
 T02: separaten SSH-Key für Backrest erzeugen
 T03: Backup-User backrest-backup auf srv120 anlegen
 T04: sudoers-Minimalrechte vorbereiten
