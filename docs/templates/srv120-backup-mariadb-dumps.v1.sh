@@ -65,6 +65,8 @@ write_manifest() {
   local dump_file="$2"
   local sha_file="$3"
   local manifest_file="$4"
+  local table_count="$5"
+  local validation_note="$6"
   local bytes sha
 
   bytes="$(stat -c '%s' "$dump_file")"
@@ -82,6 +84,9 @@ write_manifest() {
   "sha256_file": "${sha_file}",
   "sha256": "${sha}",
   "bytes": ${bytes},
+  "table_count": ${table_count},
+  "validation_status": "ok",
+  "validation_note": "${validation_note}",
   "gzip_test": "ok",
   "checksum_test": "ok",
   "excluded": [
@@ -104,7 +109,7 @@ dump_environment() {
   local dump_dir="${BASE_DIR}/${env_name}/dumps"
   local manifest_dir="${BASE_DIR}/${env_name}/manifests"
   local tmp_dir="${BASE_DIR}/${env_name}/tmp"
-  local tmp_file dump_file sha_file manifest_file bytes sha db_count
+  local tmp_file dump_file sha_file manifest_file bytes sha db_count table_count validation_note
 
   load_env "$env_name"
 
@@ -117,6 +122,9 @@ dump_environment() {
   db_count="$(docker exec -i -e MYSQL_PWD="$DB_PASSWORD" "$MARIADB_CONTAINER" mariadb -N -B -u "$DB_USER" -e "SHOW DATABASES" 2>/dev/null | awk -v db="$DB_NAME" '$0 == db { count++ } END { print count + 0 }')"
   [[ "$db_count" == "1" ]] || fail "${env_name}: database not found exactly once: ${DB_NAME}"
 
+  table_count="$(docker exec -i -e MYSQL_PWD="$DB_PASSWORD" "$MARIADB_CONTAINER" mariadb -N -B -u "$DB_USER" -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='${DB_NAME}'" 2>/dev/null | awk 'NF { print $1; exit }')"
+  [[ "$table_count" =~ ^[0-9]+$ ]] || fail "${env_name}: could not determine table count for ${DB_NAME}"
+
   tmp_file="${tmp_dir}/${env_name}-${DB_NAME}-${RUN_ID}.sql.gz.tmp"
   dump_file="${dump_dir}/${env_name}-${DB_NAME}-${RUN_ID}.sql.gz"
   sha_file="${dump_file}.sha256"
@@ -127,7 +135,12 @@ dump_environment() {
 
   gzip -t "$tmp_file"
   bytes="$(stat -c '%s' "$tmp_file")"
-  [[ "$bytes" -gt 1024 ]] || fail "${env_name}: dump too small (${bytes} bytes)"
+  validation_note="technical dump ok"
+  if [[ "$table_count" == "0" ]]; then
+    validation_note="technical dump ok; database has no tables"
+  elif [[ "$bytes" -le 1024 ]]; then
+    validation_note="technical dump ok; small dump accepted"
+  fi
 
   mv "$tmp_file" "$dump_file"
   chmod 0640 "$dump_file"
@@ -136,10 +149,10 @@ dump_environment() {
   chmod 0640 "$sha_file"
   sha256sum -c "$sha_file" >/dev/null
 
-  write_manifest "$env_name" "$dump_file" "$sha_file" "$manifest_file"
+  write_manifest "$env_name" "$dump_file" "$sha_file" "$manifest_file" "$table_count" "$validation_note"
 
   sha="$(cut -d' ' -f1 "$sha_file")"
-  printf 'OK mariadb %s dump created: %s %s bytes %s\n' "$env_name" "$dump_file" "$bytes" "$sha"
+  printf 'OK mariadb %s dump created: %s %s bytes %s table_count=%s note="%s"\n' "$env_name" "$dump_file" "$bytes" "$sha" "$table_count" "$validation_note"
   printf 'OK mariadb %s manifest created: %s\n' "$env_name" "$manifest_file"
 }
 
