@@ -243,3 +243,31 @@ Offen:
 - Backrest-/Unraid-Admin-Konfiguration nur nach expliziter Freigabe bzw. mit Betreiberzugang prüfen.
 - Finaler Unraid Repository-Pfad und Secret-Ablage sind noch zu bestätigen.
 - Nächster Schritt: T02 separaten Backrest SSH-Key vorbereiten.
+
+## 2026-05-30 srv120 Backup T02-T09 Execution
+
+Status:
+
+- T02 vorbereitet: separater ED25519 SSH-Key erzeugt; Fingerprint dokumentiert; Private Key nicht dokumentiert.
+- T03 blockiert: `backrest-backup` kann mit aktuellem read-only Zugang nicht angelegt werden; Admin/root benötigt.
+- T04 vorbereitet, aber Installation blockiert: sudoers-Minimalregeln definiert; Admin/root und T03 benötigt.
+- T05 blockiert: `/var/backups/srv120` fehlt; Anlegen benötigt Admin/root.
+- T06 blockiert: MariaDB Backup-User benötigt DB-Admin/Secret-Handling durch Betreiber.
+- T07 vorbereitet, aber Installation/Test blockiert: Dump-Script-Template erstellt; abhängig von T03-T06.
+- T08 teilweise erledigt: Container-Inventar read-only erstellt; Volume-/Mount-Details fehlen im aktuellen Monitoring-Script.
+- T09 blockiert/noch nicht anwendbar: keine laufenden Laravel App/Worker/Scheduler/Horizon Container sichtbar; Storage-Mounts nicht belastbar prüfbar.
+
+Dokumentation:
+
+- `docs/BACKUP_T02_T09_EXECUTION_STATUS.md`
+- `docs/BACKUP_T08_COOLIFY_VOLUME_INVENTORY.md`
+- `docs/BACKUP_T09_LARAVEL_STORAGE_VERIFICATION.md`
+- `docs/templates/server-backup-mariadb-dumps.template.sh`
+
+Nicht durchgeführt:
+
+- keine produktiven Backrest-Jobs erstellt
+- keine Schedules aktiviert
+- keine Restic-Repositories angelegt
+- keine Änderungen auf `srv120`
+- keine Secrets dokumentiert

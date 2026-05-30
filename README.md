@@ -52,6 +52,9 @@ Dieses Repository darf **nicht** enthalten:
 │   ├── BACKUP_STRATEGY.md
 │   ├── BACKUP_IMPLEMENTATION_PLAN.md
 │   ├── BACKUP_T01_UNRAID_BACKREST_PREP.md
+│   ├── BACKUP_T02_T09_EXECUTION_STATUS.md
+│   ├── BACKUP_T08_COOLIFY_VOLUME_INVENTORY.md
+│   ├── BACKUP_T09_LARAVEL_STORAGE_VERIFICATION.md
 │   ├── SYNC_POLICY.md
 │   └── GLOSSARY.md
 ├── diagrams
@@ -115,4 +118,7 @@ Für die aktuelle Zielsetzung ist `4kc-docs` die beste Wahl.
 - [Backup Strategy](docs/BACKUP_STRATEGY.md)
 - [Backup Implementation Plan](docs/BACKUP_IMPLEMENTATION_PLAN.md)
 - [T01 Backrest auf Unraid vorbereiten](docs/BACKUP_T01_UNRAID_BACKREST_PREP.md)
+- [T02-T09 Execution Status](docs/BACKUP_T02_T09_EXECUTION_STATUS.md)
+- [T08 Coolify / Volume Inventory](docs/BACKUP_T08_COOLIFY_VOLUME_INVENTORY.md)
+- [T09 Laravel Storage Verification](docs/BACKUP_T09_LARAVEL_STORAGE_VERIFICATION.md)
 - [Restore Procedure](docs/RESTORE_PROCEDURE.md)

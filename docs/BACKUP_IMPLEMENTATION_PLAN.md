@@ -836,14 +836,14 @@ Nach Review und Freigabe empfiehlt sich diese Reihenfolge:
 
 ```text
 T01: Backrest auf Unraid vorbereiten, ohne Jobs — gestartet/verifiziert, siehe `docs/BACKUP_T01_UNRAID_BACKREST_PREP.md`
-T02: separaten SSH-Key für Backrest erzeugen
-T03: Backup-User backrest-backup auf srv120 anlegen
-T04: sudoers-Minimalrechte vorbereiten
-T05: Staging-Verzeichnis /var/backups/srv120 vorbereiten
-T06: MariaDB Backup-User und Credentials sicher einrichten
-T07: MariaDB Dump Script installieren und manuell testen
-T08: Coolify/Volume Inventar read-only erstellen
-T09: Laravel Storage Pfade verifizieren
+T02: separaten SSH-Key für Backrest erzeugen — vorbereitet, Fingerprint dokumentiert, Private Key nicht dokumentiert
+T03: Backup-User backrest-backup auf srv120 anlegen — blockiert, Admin/root benötigt
+T04: sudoers-Minimalrechte vorbereiten — vorbereitet, Installation blockiert bis T03/Admin/root
+T05: Staging-Verzeichnis /var/backups/srv120 vorbereiten — blockiert, Verzeichnis fehlt, Admin/root benötigt
+T06: MariaDB Backup-User und Credentials sicher einrichten — blockiert, DB-Admin/Secret-Handling durch Betreiber benötigt
+T07: MariaDB Dump Script installieren und manuell testen — Template vorbereitet, Installation/Test blockiert bis T03-T06
+T08: Coolify/Volume Inventar read-only erstellen — teilweise erledigt, Container inventarisiert, Volume-/Mount-Liste offen
+T09: Laravel Storage Pfade verifizieren — blockiert/noch nicht anwendbar, keine laufenden Laravel App-Container sichtbar
 T10: Backrest Repository anlegen
 T11: manueller Backrest Testlauf ohne Schedule
 T12: technischer Restore-Test

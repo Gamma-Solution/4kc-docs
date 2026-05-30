@@ -44,6 +44,7 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 - Backup-Pläne wurden noch nicht erstellt; nächster Schritt ist die technische Planung von Backrest-Jobs, Dump-Scripts, sudoers-Minimalrechten, Retention und Restore-Test.
 - Backup-Strategie freigegeben; technischer Umsetzungsplan unter `docs/BACKUP_IMPLEMENTATION_PLAN.md` erstellt. Enthalten sind Backrest auf Unraid, separater Backup-User, MariaDB Dump-Scripts, Coolify-Daten, Laravel Storage, Redis-Bewertung, Retention, Restore-Test und Freigabe-Gates. Noch keine produktiven Backup-Jobs erstellt.
 - T01 gestartet: Backrest auf Unraid ist von der Hermes-VM im LAN erreichbar; sichtbare UI Build Version `1.13.0`. Keine Jobs, Schedules oder Repositories erstellt; keine Änderungen auf `srv120`. Details: `docs/BACKUP_T01_UNRAID_BACKREST_PREP.md`.
+- T02-T09 bearbeitet: T02 vorbereitet; T03-T07 sind mangels Admin/root bzw. DB-Admin/Secret-Handling blockiert; T08 teilweise read-only inventarisiert; T09 noch nicht vollständig anwendbar, weil keine laufenden Laravel App-Container sichtbar sind. Pro Ticket wurde ein Telegram-Status versendet. Details: `docs/BACKUP_T02_T09_EXECUTION_STATUS.md`.
 
 
 ## Staging App Provisioning 2026-05-29
