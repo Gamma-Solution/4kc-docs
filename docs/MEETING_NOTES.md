@@ -40,6 +40,9 @@ Es enthält keine Zugangsdaten, Tokens, Kundendaten oder produktiven Secrets.
 - Geplant: Laravel Deployment auf Staging validieren.
 - Wöchentliches read-only Monitoring auf `srv120.4youhosting.ch`: SSH funktioniert mit `hermes-monitor`; Ubuntu meldet keine ausstehenden Updates; Disk/RAM/CPU unauffällig. Docker-/Container-/MariaDB-/Redis-/Backup-Status sind mit dem aktuellen Monitoring-User nicht eindeutig prüfbar, da kein lesender Zugriff auf `/var/run/docker.sock` besteht. HTTPS für `4kc.ch` und `coolify.4youhosting.ch` erreichbar; der direkte srv120-Hostname liefert ein Traefik-Default-/Self-signed-Zertifikat.
 
+- Backup-Zielarchitektur für `srv120` festgelegt: Backrest soll auf Unraid laufen, `srv120` per dediziertem SSH-Backup-User anbinden, MariaDB Production/Staging über kontrollierte Dumps sichern, Laravel Storage/Coolify/Redis/Host-Konfiguration in verschlüsselte Restic Snapshots aufnehmen und die Synology RS422+ als zweite Sicherung nutzen.
+- Backup-Pläne wurden noch nicht erstellt; nächster Schritt ist die technische Planung von Backrest-Jobs, Dump-Scripts, sudoers-Minimalrechten, Retention und Restore-Test.
+
 
 ## Staging App Provisioning 2026-05-29
 

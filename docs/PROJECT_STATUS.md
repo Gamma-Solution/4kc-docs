@@ -22,7 +22,7 @@ Legende:
 [✓] Redis
 [✓] Staging Environment
 [ ] Production Deployment
-[ ] Backup Automatisierung
+[~] Backup Automatisierung
 [ ] Restore-Test
 ```
 
@@ -68,7 +68,7 @@ Legende:
 [ ] PowerDNS
 [~] Plesk
 [ ] Mail Provider
-[ ] Backup Provider
+[~] Backup Provider
 [ ] Monitoring
 ```
 
@@ -190,3 +190,20 @@ Arbeitsreihenfolge:
 4. Healthchecks
 5. Review
 6. Production
+
+## 2026-05-30 srv120 Backup Architecture
+
+Status:
+
+- Backup-Zielarchitektur definiert: Backrest auf Unraid, `srv120` per dediziertem SSH-Backup-User, Restic als verschlüsseltes Repository, Synology RS422+ als zweite Sicherung.
+- MariaDB Production und Staging sollen über kontrollierte konsistente Dumps gesichert werden, nicht durch blindes Kopieren laufender Datenbankdateien.
+- Laravel Storage wird ab produktiver Dateinutzung als kritischer Backup-Bestandteil behandelt.
+- Coolify persistente Daten, Redis-Snapshots und relevante Host-Konfiguration sollen in die verschlüsselten Snapshots aufgenommen werden.
+- Backup bleibt operativ gelb, bis Backrest/Restic eingerichtet und ein Restore-Test erfolgreich dokumentiert ist.
+
+Nicht durchgeführt:
+
+- keine Backup-Pläne erstellt
+- keine Backrest-Jobs angelegt
+- keine Änderungen auf `srv120`
+- keine Secrets dokumentiert

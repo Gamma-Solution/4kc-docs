@@ -203,3 +203,32 @@ Begründung:
 - sichere Trennung von Vorbereitung und Production
 - nachvollziehbare Übergabe an neue Entwickler oder KI-Agenten
 - minimiertes Risiko für Daten, Secrets und produktive Dienste
+
+## DEC-0001
+
+ID:
+DEC-0001
+
+Titel:
+srv120 Backup-Architektur mit Backrest, Unraid und Synology
+
+Datum:
+2026-05-30
+
+Entscheidung:
+Backrest soll auf Unraid als zentrale Backup-Steuerung betrieben werden. `srv120` wird per dediziertem SSH-Backup-User angebunden. MariaDB Production und Staging werden über kontrollierte Dump-Scripts auf `srv120` erzeugt und anschließend mit Restic gesichert. Laravel Storage, Coolify persistente Daten, Redis-Snapshots und relevante Host-Konfiguration werden ebenfalls in verschlüsselte Restic Snapshots aufgenommen. Unraid ist das primäre Backup-Ziel; die Synology RS422+ erhält eine zweite verschlüsselte Kopie.
+
+Begründung:
+Backrest außerhalb von `srv120` vermeidet, dass die Backup-Steuerung bei einem Ausfall des zu sichernden Servers ebenfalls ausfällt. MariaDB benötigt konsistente logische Dumps statt blind kopierter Live-Datenbankdateien. Unraid ist als primäres Backup-Ziel vorgesehen; die Synology RS422+ erhöht die Ausfallsicherheit als zweite Sicherung. Die Trennung von Monitoring-User und Backup-User reduziert Rechte und Risiko.
+
+Alternativen:
+- Backrest direkt auf `srv120` betreiben: verworfen als primäre Zielarchitektur, weil Backup-Steuerung und Produktionsserver gekoppelt wären.
+- Nur Docker Volumes sichern: verworfen, weil MariaDB-Dumps und Restore-Fähigkeit explizit benötigt werden.
+- Direktes unverschlüsseltes Kopieren zur Synology: verworfen, weil Backups verschlüsselt und nachvollziehbar versioniert sein sollen.
+
+Auswirkungen:
+- Es wird ein separater Backup-SSH-User mit minimalen sudo-Rechten für definierte Dump-/Read-Scripts benötigt.
+- MariaDB Production und Staging erhalten getrennte Dump-Dateien.
+- Laravel Storage wird ab produktiver Dateinutzung als kritisch betrachtet.
+- Backup bleibt im Monitoring gelb, bis Backrest/Restic technisch definiert, eingerichtet und per Restore-Test validiert ist.
+- Backups gelten erst nach regelmäßigem Restore-Test als verifiziert.
