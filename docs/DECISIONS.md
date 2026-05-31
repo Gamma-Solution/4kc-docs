@@ -232,3 +232,29 @@ Auswirkungen:
 - Laravel Storage wird ab produktiver Dateinutzung als kritisch betrachtet.
 - Backup bleibt im Monitoring gelb, bis Backrest/Restic technisch definiert, eingerichtet und per Restore-Test validiert ist.
 - Backups gelten erst nach regelmäßigem Restore-Test als verifiziert.
+
+## DEC-0002
+
+ID:
+DEC-0002
+
+Titel:
+InterNetX Import erst nach validiertem Single-Domain-Read-only-Flow
+
+Datum:
+2026-05-31
+
+Entscheidung:
+InterNetX-Domains werden nicht direkt als Massenimport übernommen. Zuerst wird eine einzelne Domain in Staging einem Kunden zugeordnet und der Read-only-Flow gegen den Registrar validiert. Erst danach folgen Preview/Dry-Run, Matching und expliziter Commit für spätere Importe.
+
+Begründung:
+Ein validierter Einzeldomain-Flow reduziert das Risiko, unvollständige oder falsch gemappte Registrar-Daten in Masse zu importieren. Domain-Readback, Zone-Readback, Nameserver, Status, Ablaufdaten und UI-Darstellung müssen zuerst an einem kontrollierten Testfall funktionieren.
+
+Alternativen:
+- Sofortiger Massenimport: verworfen, weil Konflikte, fehlende Kundenzuordnung und unvollständiges Mapping zu früh in die Datenbank gelangen könnten.
+- Nur Dummy-Daten verwenden: verworfen als alleinige Strategie, weil echte AutoDNS-Strukturen abweichen können.
+
+Auswirkungen:
+- Der nächste Entwicklungsschritt bleibt InterNetX Read-only Sync für eine einzelne Domain.
+- Der spätere Import braucht Preview/Dry-Run, Konfliktanzeige, Matching und explizite Commit-Aktion.
+- Registrar-Schreiboperationen bleiben separat freigabepflichtig.

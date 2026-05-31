@@ -142,3 +142,13 @@ Arbeitsreihenfolge:
 4. Healthchecks
 5. Review
 6. Production
+
+## 2026-05-31
+
+- Staging-Branch von `Gamma-Solution/4kc-panel` auf den aktuellen Stand mit interner Customer-Domain-Zuordnungs-API gebracht.
+- `4kc-app-staging` über Coolify deployed; `/up` und Startseite liefern HTTP 200, `/admin` liefert erwarteten Login-Redirect.
+- Neue interne Admin-API `POST /api/admin/customer-domains` auf Staging verifiziert.
+- Eine einzelne InterNetX-Testdomain wurde in Staging einem bestehenden Kunden zugeordnet, um den nächsten read-only Registrar-Sync kontrolliert als Einzeldomain-Test fortzuführen.
+- Es wurden keine Production Deployments, keine Production Migrationen und keine Registrar-Schreiboperationen ausgeführt.
+- Es wurden keine Secrets dokumentiert.
+

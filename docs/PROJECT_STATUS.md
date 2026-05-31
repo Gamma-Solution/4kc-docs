@@ -36,11 +36,11 @@ Legende:
 [~] Customers
 [~] Packages / Products
 [ ] Hosting
-[ ] Domains
+[~] Domains
 [ ] Billing
 [ ] Tickets
 [ ] Customer Portal
-[ ] API
+[~] API
 ```
 
 ## Runtime Services
@@ -52,7 +52,7 @@ Legende:
 [ ] 4kc-horizon-production
 [✓] 4kc-mariadb-production
 [✓] 4kc-production-redis
-[ ] 4kc-app-staging
+[✓] 4kc-app-staging
 [ ] 4kc-worker-staging
 [ ] 4kc-scheduler-staging
 [ ] 4kc-horizon-staging
@@ -94,7 +94,8 @@ Legende:
 
 [~] GitHub App Integration for `Gamma-Solution`
 [~] Laravel Deployment Preparation on Staging
-[ ] Dockerfile validation in Coolify
+[✓] Dockerfile validation in Coolify
+[~] InterNetX single-domain read-only validation
 [ ] Backup and Restore validation
 [ ] T02 Backrest SSH-Key vorbereiten
 [~] Weekly read-only srv120 Monitoring: Host erreichbar, Ubuntu ohne ausstehende Updates, Disk/RAM/CPU unauffällig; Docker-/Container-/DB-/Redis-Status aktuell durch fehlende Docker-Socket-Leserechte des Monitoring-Users nicht prüfbar; srv120-Hostname liefert Traefik-Default-Zertifikat.
@@ -270,4 +271,22 @@ Nicht durchgeführt:
 - keine Schedules aktiviert
 - keine Restic-Repositories angelegt
 - keine Änderungen auf `srv120`
+- keine Secrets dokumentiert
+
+## 2026-05-31 InterNetX Single-Domain Preparation
+
+Status:
+
+- Staging-App `4kc-app-staging` läuft gesund nach Dockerfile/Coolify Deployment.
+- Interne Admin-API zur manuellen Customer-Domain-Zuordnung ist auf Staging deployed.
+- API-Route `POST /api/admin/customer-domains` ist geschützt und live erreichbar.
+- Eine einzelne InterNetX-Testdomain ist in Staging einem bestehenden Kunden zugeordnet, damit der nächste Schritt als kontrollierter Read-only-Sync gegen den Registrar erfolgen kann.
+- Der in Staging vorhandene InterNetX-Registrar-Datensatz ist ein Dummy/Smoke-Test-Datensatz; produktive Registrar-Secrets bleiben ausserhalb von GitHub und Docs.
+
+Nicht durchgeführt:
+
+- kein Production Deployment
+- keine Production Migrationen
+- keine Änderungen an Production-Datenbanken
+- keine Registrar-Schreiboperationen
 - keine Secrets dokumentiert
