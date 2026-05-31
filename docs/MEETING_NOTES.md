@@ -151,4 +151,4 @@ Arbeitsreihenfolge:
 - Eine einzelne InterNetX-Testdomain wurde in Staging einem bestehenden Kunden zugeordnet, um den nächsten read-only Registrar-Sync kontrolliert als Einzeldomain-Test fortzuführen.
 - Es wurden keine Production Deployments, keine Production Migrationen und keine Registrar-Schreiboperationen ausgeführt.
 - Es wurden keine Secrets dokumentiert.
-
+- InterNetX Single-Domain Read-only Smoke für `4youvideo.ch` auf Staging erfolgreich: Status/Expiry/Auto-Renew/Nameserver/DNS-Zone/SOA/Resource-Records wurden synchron gelesen; keine Registrar-Schreiboperationen und keine Secrets dokumentiert.

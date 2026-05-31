@@ -258,3 +258,30 @@ Auswirkungen:
 - Der nächste Entwicklungsschritt bleibt InterNetX Read-only Sync für eine einzelne Domain.
 - Der spätere Import braucht Preview/Dry-Run, Konfliktanzeige, Matching und explizite Commit-Aktion.
 - Registrar-Schreiboperationen bleiben separat freigabepflichtig.
+
+## DEC-0003
+
+ID:
+DEC-0003
+
+Titel:
+Staging-Registrar-Aktivierung über geschützte Admin-API ohne Secret-Ausgabe
+
+Datum:
+2026-05-31
+
+Entscheidung:
+Für Staging darf eine geschützte interne Admin-API verwendet werden, um Registrar-Konfigurationen aus einer bereits funktionsfähigen lokalen 4KC-Instanz zu übernehmen und danach einzelne Domains synchron read-only zu validieren. Secret-Werte dürfen dabei nicht in API-Antworten, Logs, Dokumentation oder Commits ausgegeben werden.
+
+Begründung:
+Die lokale VM enthält bereits eine geprüfte InterNetX/AutoDNS-Konfiguration. Staging benötigt dieselbe Funktionsfähigkeit für kontrollierte Einzeldomain-Smokes, bevor ein späterer Import gebaut oder ausgeführt wird. Die API vermeidet direkten DB-Zugriff auf Staging und bleibt durch Admin-Auth sowie `domains.manage_operations` geschützt.
+
+Alternativen:
+- Manuelle Pflege nur per UI: möglich, aber fehleranfälliger und langsamer für reproduzierbare Staging-Aktivierung.
+- Direkter Staging-DB-Zugriff: verworfen, weil weniger kontrolliert und über die aktuelle Umgebung nicht sauber verfügbar.
+- Secrets in Git oder Docs speichern: ausgeschlossen.
+
+Auswirkungen:
+- Staging kann gezielt für Registrar-Smokes vorbereitet werden.
+- API-Antworten müssen Secret-Felder konsequent ausblenden.
+- Production bleibt weiterhin freigabepflichtig.

@@ -290,3 +290,21 @@ Nicht durchgeführt:
 - keine Änderungen an Production-Datenbanken
 - keine Registrar-Schreiboperationen
 - keine Secrets dokumentiert
+
+## 2026-05-31 InterNetX Single-Domain Read-only Smoke
+
+Status:
+
+- Staging-App wurde auf den Stand mit interner Registrar-Upsert-API und synchroner Domain-Info-Sync-API deployed.
+- Die in Staging vorhandene InterNetX-Registrar-Konfiguration wurde anhand der bereits lokal funktionsfähigen Konfiguration aktiviert; Secrets wurden nicht dokumentiert.
+- `4youvideo.ch` wurde in Staging synchron per Read-only-Info-Sync gegen InterNetX/AutoDNS validiert.
+- Readback-Ergebnis: Domain aktiv, Ablaufdatum vorhanden, Auto-Renew aktiv, Cloudflare-Nameserver übernommen, DNS-Zone vorhanden, SOA vorhanden und zwei Resource Records erkannt.
+
+Nicht durchgeführt:
+
+- kein Production Deployment
+- keine Production Migrationen
+- keine Registrar-Schreiboperationen
+- kein Massenimport
+- keine Secrets dokumentiert
+
