@@ -98,7 +98,7 @@ Legende:
 [~] InterNetX single-domain read-only validation
 [ ] Backup and Restore validation
 [ ] T02 Backrest SSH-Key vorbereiten
-[~] Weekly read-only srv120 Monitoring: Host erreichbar, Ubuntu ohne ausstehende Updates, Disk/RAM/CPU unauffällig; Docker-/Container-/DB-/Redis-Status aktuell durch fehlende Docker-Socket-Leserechte des Monitoring-Users nicht prüfbar; srv120-Hostname liefert Traefik-Default-Zertifikat.
+[~] Weekly read-only srv120 Monitoring (2026-06-29): Host erreichbar; 14 Updates verfügbar (u.a. Docker/Compose, keine Security-Updates im Script ausgewiesen); Docker/Coolify, Container, MariaDB und Redis healthy; Disk/RAM/CPU unauffällig; Backup bleibt gelb, bis Backrest/Restic eindeutig prüfbar ist; SSL für coolify.4youhosting.ch, 4kc.ch und www.4kc.ch OK.
 
 
 ## 2026-05-29 Staging App
